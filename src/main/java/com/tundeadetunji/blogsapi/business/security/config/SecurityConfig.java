@@ -1,6 +1,6 @@
 package com.tundeadetunji.blogsapi.business.security.config;
 
-import com.tundeadetunji.blogsapi.business.internal.General;
+import com.tundeadetunji.blogsapi.business.policies.General;
 import com.tundeadetunji.blogsapi.business.security.filter.CustomAuthenticationFilter;
 import com.tundeadetunji.blogsapi.business.security.filter.CustomAuthorizationFilter;
 import org.springframework.context.annotation.Bean;

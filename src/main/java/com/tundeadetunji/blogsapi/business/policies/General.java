@@ -1,4 +1,4 @@
-package com.tundeadetunji.blogsapi.business.internal;
+package com.tundeadetunji.blogsapi.business.policies;
 
 import com.auth0.jwt.algorithms.Algorithm;
 import com.tundeadetunji.blogsapi.business.security.vault.Secrets;

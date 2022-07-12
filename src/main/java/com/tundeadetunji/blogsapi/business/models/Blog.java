@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.UUID;
 
 @Entity
-@Table(name = "Blogs")
+//@Table(name = "Blogs")
 public class Blog {
 
     @Id
@@ -26,10 +26,11 @@ public class Blog {
     private String author;
 
     @Column(nullable = false)
-    private String published = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date(System.currentTimeMillis()));
+    private String published = new SimpleDateFormat("yyyy/MM/dd").format(new Date(System.currentTimeMillis()));
 
     @Column(nullable = false)
-    private String lastModified = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date(System.currentTimeMillis()));
+    //private String lastModified = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date(System.currentTimeMillis()));
+    private String lastModified = new SimpleDateFormat("yyyy/MM/dd").format(new Date(System.currentTimeMillis()));
 
     @Column(nullable = false, length = 4000)
     private String content;
@@ -37,20 +38,20 @@ public class Blog {
     @Column(nullable = false, length = 4000)
     private String contentLead;
 
-//    public Blog() {
-//    }
+    public Blog() {
+    }
 
-//    public Blog(Long id, String uuid, String category, String title, String author, String published, String lastModified, String content, String contentLead) {
-//        this.id = id;
-//        this.uuid = uuid;
-//        this.category = category;
-//        this.title = title;
-//        this.author = author;
-//        this.published = published;
-//        this.lastModified = lastModified;
-//        this.content = content;
-//        this.contentLead = contentLead;
-//    }
+    public Blog(Long id, String uuid, String category, String title, String author, String published, String lastModified, String content, String contentLead) {
+        this.id = id;
+        this.uuid = uuid;
+        this.category = category;
+        this.title = title;
+        this.author = author;
+        this.published = published;
+        this.lastModified = lastModified;
+        this.content = content;
+        this.contentLead = contentLead;
+    }
 
     public Long getId() {
         return id;

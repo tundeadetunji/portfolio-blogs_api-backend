@@ -19,7 +19,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.tundeadetunji.blogsapi.business.internal.General.algorithm;
+import static com.tundeadetunji.blogsapi.business.policies.General.algorithm;
 import static java.util.Arrays.stream;
 import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 import static org.springframework.http.HttpStatus.FORBIDDEN;

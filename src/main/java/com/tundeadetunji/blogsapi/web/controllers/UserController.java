@@ -4,7 +4,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tundeadetunji.blogsapi.business.internal.General;
+import com.tundeadetunji.blogsapi.business.policies.General;
 import com.tundeadetunji.blogsapi.business.models.Role;
 import com.tundeadetunji.blogsapi.business.models.User;
 import com.tundeadetunji.blogsapi.business.services.UserService;
@@ -44,8 +44,8 @@ public class UserController extends General {
     @GetMapping("/token/refresh")
     public void refreshToken(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String authorizationHeader = request.getHeader(AUTHORIZATION);
-        if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")){
-            try{
+        if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
+            try {
                 String old_access_token = authorizationHeader.substring("Bearer ".length());
                 JWTVerifier verifier = JWT.require(algorithm).build();
                 DecodedJWT decodedJWT = verifier.verify(old_access_token);
@@ -63,8 +63,7 @@ public class UserController extends General {
                 token.put("access_token", new_access_token);
                 response.setContentType(APPLICATION_JSON_VALUE);
                 new ObjectMapper().writeValue(response.getOutputStream(), token);
-            }
-            catch (Exception exception){
+            } catch (Exception exception) {
                 //log exception
 
                 response.setHeader("error", exception.getMessage());
@@ -79,8 +78,7 @@ public class UserController extends General {
                 response.setContentType(APPLICATION_JSON_VALUE);
                 new ObjectMapper().writeValue(response.getOutputStream(), error);
             }
-        }
-        else{
+        } else {
             throw new RuntimeException("Refresh token is missing!");
         }
     }

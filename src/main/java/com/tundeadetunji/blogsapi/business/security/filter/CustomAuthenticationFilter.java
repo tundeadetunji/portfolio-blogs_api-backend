@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static com.tundeadetunji.blogsapi.business.internal.General.algorithm;
+import static com.tundeadetunji.blogsapi.business.policies.General.algorithm;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
