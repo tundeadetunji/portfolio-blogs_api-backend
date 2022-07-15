@@ -20,12 +20,5 @@ public class BlogServiceImplementation implements BlogService{
         return blogRepository.save(blog);
     }
 
-//    List<Blog> findByTitle(String title){
-//        return null;
-//    }
-//
-//    Long HowManyBlogsWithTitle(String title){
-//        return null;
-//    }
 
 }

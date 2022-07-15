@@ -6,6 +6,7 @@ import com.tundeadetunji.blogsapi.business.models.Role;
 import com.tundeadetunji.blogsapi.business.models.User;
 import com.tundeadetunji.blogsapi.business.services.BlogService;
 import com.tundeadetunji.blogsapi.business.services.UserService;
+import lombok.extern.java.Log;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,6 +18,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
+
 
 @SpringBootApplication
 public class BlogsapiApplication extends General {
@@ -34,10 +36,10 @@ public class BlogsapiApplication extends General {
             userService.saveRole(new Role(null, General.userRoles.ROLE_ADMIN.toString()));
             userService.saveRole(new Role(null, General.userRoles.ROLE_USER.toString()));
             //users
-            userService.saveUser(new User(null, "jane@blogs.com", "jane@blogs.com", "password", "Jane", "Doe", new ArrayList<>()));
+            userService.saveUser(new User(null, "admin@blogs.com", "admin@blogs.com", "password", "Jane", "Doe", new ArrayList<>()));
             //users' roles
-            userService.addRoleToUser("jane@blogs.com", userRoles.ROLE_ADMIN.toString());
-            userService.addRoleToUser("jane@blogs.com", userRoles.ROLE_USER.toString());
+            userService.addRoleToUser("admin@blogs.com", General.userRoles.ROLE_ADMIN.toString());
+            userService.addRoleToUser("admin@blogs.com", General.userRoles.ROLE_USER.toString());
             //blogs
             blogService.saveBlog(new Blog(null, UUID.randomUUID().toString(), data.blog_1_category, data.blog_1_title, data.blog_1_author, new SimpleDateFormat("yyyy/MM/dd").format(new Date(System.currentTimeMillis())), new SimpleDateFormat("yyyy/MM/dd").format(new Date(System.currentTimeMillis())), data.blog_1_content, data.blog_1_content_lead));
             blogService.saveBlog(new Blog(null, UUID.randomUUID().toString(), data.blog_2_category, data.blog_2_title, data.blog_2_author, new SimpleDateFormat("yyyy/MM/dd").format(new Date(System.currentTimeMillis())), new SimpleDateFormat("yyyy/MM/dd").format(new Date(System.currentTimeMillis())), data.blog_2_content, data.blog_2_content_lead));

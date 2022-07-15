@@ -4,6 +4,7 @@ import com.tundeadetunji.blogsapi.business.models.Role;
 import com.tundeadetunji.blogsapi.business.models.User;
 import com.tundeadetunji.blogsapi.business.repositories.RoleRepository;
 import com.tundeadetunji.blogsapi.business.repositories.UserRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+@Slf4j
 @Service
 @Transactional
 public class UserServiceImplementation implements UserService, UserDetailsService {
@@ -63,7 +65,9 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username);
         if (user == null) {
-            //log.error("User not found");
+            //log error
+            log.error("User not found");
+
             throw new UsernameNotFoundException("User not found in the database");
         }
         Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
@@ -71,7 +75,9 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
             authorities.add(new SimpleGrantedAuthority(role.getName()));
         });
 
-        //log.info("User {} found", username);
+        //log
+        log.info("User {} found", username);
+
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), authorities);
     }
 }

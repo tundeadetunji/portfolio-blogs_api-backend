@@ -51,7 +51,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/api/login/**", "/api/token/refresh/**").permitAll();
 
         http.authorizeRequests().antMatchers("/api/users").hasAuthority(General.userRoles.ROLE_ADMIN.toString());
-        http.authorizeRequests().antMatchers("/api/blog/**").authenticated();
+        //http.authorizeRequests().antMatchers("/api/blog/**").authenticated();
         http.authorizeRequests().anyRequest().permitAll();
 
         //use this if you want to leave the default login url ("base_url/login")
